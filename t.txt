@@ -21,5 +21,5 @@ git remote add origin git@github.com:88ino/Repo.git
 git push -u origin main
 
 git add t.txt
-git commit -m "Hi" 
+git commit -m "Hi_2" 
 git push origin main
