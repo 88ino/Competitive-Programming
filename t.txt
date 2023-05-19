@@ -1,24 +1,5 @@
 
-git init                                    
-git t.txt                          
-git commit -m "コミットメッセージ"            
-git branch -M main                         
-git remote add origin git@github.com:88ino/Repo.git  
-git push origin main                  
-
-
-git config --global user.name "88ino"
-git config --global user.email "hayato1123inx@icloud.com"
-
-git init
-git add t.txt
-git commit -m "コミットメッセージ"
-git config --global user.email "hayato1123inx@icloud.com"
-git config --global user.name "88ino"
-git branch -M main
-git remote remove origin
-git remote add origin git@github.com:88ino/Repo.git
-git push -u origin main
+cd gith
 
 git add t.txt
 git commit -m "Hi_2" 
