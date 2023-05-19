@@ -1,0 +1,8 @@
+
+git init                                    
+git t.txt                          
+git commit -m "コミットメッセージ"            
+git branch -M main                         
+git remote add origin git@github.com:88ino/Repo.git   。
+git push origin main                  
+
