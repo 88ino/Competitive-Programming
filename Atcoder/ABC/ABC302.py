@@ -1,4 +1,4 @@
-#ABC参加1回目
+#ABC参加1回目　
 #A
 A, B = map(int, input().split())
 count = A//B
