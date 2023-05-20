@@ -6,7 +6,6 @@ if A%B!=0:
     count+=1
 print(count)
 
-
 #B
 H, W = map(int, input().split())
 S = [input() for _ in range(H)]
