@@ -1,6 +1,0 @@
-
-cd gith
-
-git add t.txt
-git commit -m "Hi_2" 
-git push origin main
