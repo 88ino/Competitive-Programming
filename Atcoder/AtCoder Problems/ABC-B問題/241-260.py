@@ -1,4 +1,5 @@
 # 241
+from math import cos, sin
 import stat
 
 
@@ -237,18 +238,70 @@ print(P)
 
 
 # 257
+n, k, q = map(int,input().split())
+A = list(map(int,input().split()))
+L = list(map(int,input().split()))
+state = [0]*(n+2)
+for i in range(k):
+    state[A[i]] = 1
 
+for i in range(q):
+    p = A[L[i]-1]
+    if p!=n and state[p+1] == 0:
+        state[p], state[p+1] = state[p+1], state[p]
+        A[L[i]-1] += 1
+
+for i in range(n+1):
+    if state[i] != 0:
+        print(i, end=" ")
 
 
 # 258
-
-
+N = int(input())
+A = [ input() for _ in range(N)]
+dx = [0, 1, 1, 1, 0, -1, -1, -1]
+dy = [1, 1, 0, -1, -1, -1, 0, 1]
+ans = 0
+for i in range(N):
+    for j in range(N):
+        for r in range(8):
+            x = i
+            y = j
+            sum_a = 0
+            for _ in range(N):
+                sum_a *= 10
+                sum_a += int(A[x][y])
+                x = (x + dx[r])%N
+                y = (y + dy[r])%N
+            ans = max(ans, sum_a)
+for i in range(N):
+    print(str(ans)[i], end="")
+            
 
 # 259
+from math import cos, sin, radians
 
+a, b, d = map(int, input().split())
+d = radians(d)
+
+x = a*cos(d) - b*sin(d)
+y = a*sin(d) + b*cos(d)
+print(x, y)
 
 
 # 260
+N,X,Y,Z = map(int, input().split())
+A = list(map(int, input().split()))
+B = list(map(int, input().split()))
 
+S = []
+for i in range(N):
+    S.append( (i+1, A[i], B[i]) )
+S.sort(key=lambda x: (-x[1], x[0]))
+S[X:] = sorted(S[X:], key=lambda x: (-x[2], x[0]))
+S[X+Y:] = sorted(S[X+Y:], key=lambda p: (-p[1]-p[2], p[0]))
+S[:X+Y+Z] = sorted(S[:X+Y+Z], key=lambda p: p[0])
 
+for p in S[:X+Y+Z]:
+    print(p[0])
 
