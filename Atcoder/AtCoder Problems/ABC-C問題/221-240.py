@@ -186,11 +186,41 @@ print(ans)
 
 
 # 230
+N, A, B = map(int,input().split())
+P, Q, R, S = map(int,input().split())
 
+k1 = max(1-A, 1-B)
+k2 = min(N-A, N-B)
+k3 = max(1-A, B-N)
+k4 = min(N-A, B-1)
+
+masu = [['.']*(S-R+1) for _ in range(Q-P+1)]
+
+for i in range(Q-P+1):
+    for j in range(S-R+1):
+        ki = P + i - A
+        kj = R + j - B
+        if ki == kj:
+            if k1 <= ki <= k2:
+                masu[i][j] = '#'
+        if ki == B - R - j:
+            if k3 <= ki <= k4:
+                masu[i][j] = '#'
+
+for i in range(Q-P+1):
+    print(''.join(masu[i]))
 
 
 # 231
+from bisect import bisect_left
 
+N, Q = map(int, input().split())
+A = list(map(int, input().split()))
+A.sort()
+for _ in range(Q):
+    x = int(input())
+    ans = N - bisect_left(A, x)
+    print(ans)
 
 
 # 232
