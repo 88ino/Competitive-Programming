@@ -224,7 +224,31 @@ for _ in range(Q):
 
 
 # 232
+from itertools import permutations
 
+N, M = map(int, input().split())
+X = [ [False]*N for _ in range(N)] 
+Y = [ [False]*N for _ in range(N)] 
+
+for _ in range(M):
+    a, b = map(int, input().split())
+    X[a-1][b-1] = True
+    X[b-1][a-1] = True
+for _ in range(M):
+    c, d = map(int, input().split())
+    Y[c-1][d-1] = True
+    Y[d-1][c-1] = True
+
+ans = False
+for p in permutations(range(N)):
+    flag = True
+    for i in range(N):
+        for j in range(N):
+            if X[i][j] != Y[p[i]][p[j]]:
+                flag = False
+    if flag:
+        ans = True
+print("Yes" if ans else "No")
 
 
 # 233
