@@ -252,6 +252,21 @@ print("Yes" if ans else "No")
 
 
 # 233
+N, X = map(int, input().split())
+a = []
+for _ in range(N):
+    _, *a_ = list(map(int, input().split()))
+    a.append(a_)
+
+P = [1]
+for i in range(N):
+    tmp = []
+    for ai in a[i]:
+        for p in P:
+            tmp.append(ai*p)
+    P = tmp
+
+print(P.count(X))
 
 
 
