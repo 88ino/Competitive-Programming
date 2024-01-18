@@ -269,17 +269,48 @@ for i in range(N):
 print(P.count(X))
 
 
-
 # 234
-
+K = int(input())
+r = []
+while K!=0:
+    a = K%2
+    K //= 2
+    if a == 1:
+        a = 2
+    r.append(a)
+r.reverse()
+ans = ''.join(str(i) for i in r)
+print(ans)
 
 
 # 235
+from collections import defaultdict
 
+N, Q = map(int, input().split())
+A = list(map(int, input().split()))
+L = defaultdict(list)
+
+for i in range(N):
+    L[A[i]].append(i+1)
+
+for _ in range(Q):
+    x, k = map(int, input().split())
+    if len(L[x]) < k:
+        print(-1)
+        continue
+    print(L[x][k-1])
 
 
 # 236
+N, M = map(int, input().split())
+S = input().split()
+T = set(input().split())
 
+for s in S:
+    if s in T:
+        print("Yes")
+    else:
+        print("No")
 
 
 # 237
