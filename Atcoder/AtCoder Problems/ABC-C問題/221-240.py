@@ -314,7 +314,24 @@ for s in S:
 
 
 # 237
-
+S = input()
+N = len(S)
+count = 0
+for i in range(N-1, 0, -1):
+    if S[i] != "a":
+        break
+    count += 1
+count_f = 0
+for i in range(N):
+    if S[i] != "a":
+        break
+    count_f += 1
+aa = "".join(["a"]*(count-count_f))
+S = aa + S
+if S == S[::-1]:
+    print("Yes")
+else:
+    print("No")
 
 
 # 238
