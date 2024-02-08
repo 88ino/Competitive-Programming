@@ -335,14 +335,48 @@ else:
 
 
 # 238
+N = int(input())
+mod = 998244353
+keta = len(str(N))
+ans = 0
+for i in range(1, keta):
+    s = 9*(10**(i-1))
+    ans += s*(1+s)//2
+    ans %= mod
 
+s = N - (10**(keta-1)) + 1
+ans += s*(1+s)//2
+ans %= mod
+
+print(ans)
 
 
 # 239
+def dist(a, b, c, d):
+    return ((a-c)**2 + (b-d)**2)**0.5
 
+x1, y1, x2, y2 = map(int, input().split())
+for i in range(x1-2, x1+3):
+    for j in range(y1-2, y1+3):
+        a = dist(i, j, x1, y1)
+        b = dist(i, j, x2, y2)
+        if a == 5**0.5 and b == 5**0.5:
+            print("Yes")
+            exit()
+print("No")
 
 
 # 240
+N, X = map(int, input().split())
+dp = [ [False]*(10001) for _ in range(N+1) ]
+dp[0][0] = True
 
+for i in range(0, N):
+    a, b = map(int, input().split())
+    for j in range(10001):
+        if dp[i][j]:
+            dp[i+1][j+a] = True
+            dp[i+1][j+b] = True
 
+print("Yes") if dp[N][X] else print("No")
 
