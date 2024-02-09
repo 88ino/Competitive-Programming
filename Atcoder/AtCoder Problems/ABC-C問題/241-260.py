@@ -1,4 +1,7 @@
 # 241
+from turtle import ycor
+
+
 def cal(x, y, dx, dy):
     count = 0
     for i in range(6):
@@ -25,11 +28,48 @@ print("No")
 
 
 # 242
-
+N = int(input())
+M = 998244353
+dp = [ [0]*11 for _ in range(N+1)]
+for i in range(1, 10):
+    dp[1][i] = 1
+for n in range(1, N):
+    for k in range(1, 10):
+        dp[n+1][k] = dp[n][k-1] + dp[n][k] + dp[n][k+1]
+        dp[n+1][k] %= M
+print(sum(dp[N][k] for k in range(1, 10))%M)
 
 
 # 243
+N = int(input())
+p = []
+for i in range(N):
+    x, y = map(int, input().split())
+    p.append((x, y))
+S = input()
 
+max_left = dict()
+min_right = dict()
+for i in range(N):
+    x, y = p[i]
+    if S[i] == "R":
+        if y in max_left and x < max_left[y]:
+            print("Yes")
+            exit()
+        elif y in min_right:
+            min_right[y] = min(x, min_right[y])
+        else:
+            min_right[y] = x
+
+    if S[i] == "L":
+        if y in min_right and min_right[y] < x:
+            print("Yes")
+            exit()
+        elif y in max_left:
+            max_left[y] = max(x, max_left[y])
+        else:
+            max_left[y] = x
+print("No")
 
 
 # 244
