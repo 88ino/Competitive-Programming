@@ -106,25 +106,71 @@ for i in range(N-1):
         exit()
 print("Yes")
 
-##
-
 
 # 246
-
+N, K, X = map(int, input().split())
+A = list(map(int, input().split()))
+ku = sum(A[i]//X for i in range(N))
+if ku > K:
+    print(sum(A)-K*X)
+    exit()
+B = [A[i]%X for i in range(N)] 
+B.sort(reverse=True)
+count = K-ku
+a = sum(B[:count])
+print(sum(A)-X*ku-a)
 
 
 # 247
-
+def S(sb, n):
+    return sb + [n] + sb
+N = int(input())
+Sn = [1]
+for i in range(1, N):
+    Sn = S(Sn, i+1)
+print(*Sn)
 
 
 # 248
-
+N, M, K = map(int, input().split())
+Mod = 998244353
+dp = [ [0]*(N*M+1) for _ in range(N+1) ]
+dp[0][0] = 1
+for i in range(N):
+    for j in range(K):
+        for k in range(1, M+1):
+            if j+k <= K:
+                dp[i+1][j+k] += dp[i][j] 
+ans = sum(dp[N])
+print(ans%Mod)
 
 
 # 249
+import itertools
+from collections import Counter
 
+N, K = map(int, input().split())
+S = [input() for _ in range(N)]
+a = [i for i in range(1, 17)]
+c = []
+for i in range(K, N+1):
+    c.append(itertools.combinations(S, i))
+ans = 0
+for cc in c:
+    for k in cc:
+        count = Counter()
+        for kk in k:
+            count += Counter(kk)
+        m = 0
+        key = count.keys()
+        for i in key:
+            if count[i] == K:
+                m += 1
+        ans = max(ans, m)
 
+print(ans)
 
+        
 # 250
 
 
