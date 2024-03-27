@@ -73,11 +73,40 @@ print("No")
 
 
 # 244
-
+N = int(input())
+a = set(i for i in range(1, 2*N+2))
+print(a.pop(), flush=True)
+for _ in range(N):
+    aoki = int(input())
+    a.remove(aoki)
+    print(a.pop(), flush=True)
 
 
 # 245
+N, K = map(int, input().split())
+A = list(map(int, input().split()))
+B = list(map(int, input().split()))
+fa = True
+fb = True
+for i in range(N-1):
+    a, aa = A[i], A[i+1]
+    b, bb = B[i], B[i+1]
+    if (fa == True and abs(a-aa) <= K )or (fb == True and abs(b-aa) <= K):
+        fat = True
+    else:
+        fat = False
+    if (fa == True and abs(a-bb) <= K )or (fb == True and abs(b-bb) <= K):
+        fbt = True
+    else:
+        fbt = False
+    fa, fb = fat, fbt
 
+    if fa==False and fb == False:
+        print("No")
+        exit()
+print("Yes")
+
+##
 
 
 # 246
